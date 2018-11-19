@@ -1,0 +1,28 @@
+Follow the steps below to set up the working environment on Google Colab.
+
+1. Go to: Google Colab
+
+2. Click -> File -> Open Python 3 Notebook
+
+3. Once you opened Python 3 Notebook,
+
+    Runtime -> Change Runtime Type -> Hardware Acc -> Selct GPU -> Save
+
+
+
+**How to import Foreign File In Colab **
+
+Cell 1:  
+
+from google.colab import files
+uploaded = files.upload()
+
+Cell 2:
+
+for fn in uploaded.keys():
+   print("User uploaded  file '{name}' with length {length} bytes".format(name = fn, length = len(uploaded[fn])))
+   
+Cell 3:
+
+import io
+iris = pd.read_csv(io.StringIO(uploaded['Filename.csv'].decode('utf-8')))
